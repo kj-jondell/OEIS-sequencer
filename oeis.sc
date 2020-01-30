@@ -21,7 +21,7 @@ NetAddr.localAddr()
 
 //SCALE DEFINITION
 (
-    ~scale.source = Scale.neapolitanMajor;
+    ~scale.source = Scale.chromatic;
     ~octaves = 2;
 )
 
@@ -58,9 +58,12 @@ NetAddr.localAddr()
 (
     Pbindef.new(\oeissequencer,
         \detune, Pwhite(-5,5,inf),
-        \instrument, \oeissynth,
+        \instrument, \diabetes,
         \rel, Pwhite(0.8,1.2,inf),
+        \attack, Pwhite(0.01,0.28,inf),
+        \velocity, Pwhite(40,120,inf),
         \scale, ~scale,
+        \buf, Pxrand(Array.fill(14, {arg i; i;}), inf),
         \degree, ~degrees,
         \root, 4,
         \pan, Pxrand(Array.fill(9,{arg i; i;}), inf),
@@ -70,4 +73,3 @@ NetAddr.localAddr()
 )
 
 s.queryAllNodes();
-s.meter
